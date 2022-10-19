@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/counter');
+    return redirect()->route('counter');
 });
 
 Route::get('/counter', function () {
@@ -24,4 +24,5 @@ Route::get('/counter', function () {
 })->name('counter');
 
 Route::get('/calculator', Calculator::class)->name('calculator');
+
 Route::get('/todo-list', TodoList::class)->name('todo-list');

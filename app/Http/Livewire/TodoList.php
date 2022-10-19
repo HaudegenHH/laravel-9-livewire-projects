@@ -10,9 +10,8 @@ class TodoList extends Component
     public $todos;
     public string $todoText = '';
 
-
-    public function mount() {
-
+    public function mount()
+    {
         $this->selectTodos();
     }
 
@@ -21,12 +20,8 @@ class TodoList extends Component
         return view('livewire.todo-list');
     }
 
-    public function selectTodos() {
-        $this->todos = TodoItem::orderBy('created_at', 'DESC')->get();
-    }
-
-    public function addTodo() {
-
+    public function addTodo()
+    {
         $todo = new TodoItem();
         $todo->title = $this->todoText;
         $todo->completed = false;
@@ -34,30 +29,31 @@ class TodoList extends Component
 
         $this->todoText = '';
         $this->selectTodos();
-
     }
 
-    public function toggleTodo($id) {
-
+    public function toggleTodo($id)
+    {
         $todo = TodoItem::where('id', $id)->first();
         if (!$todo) {
             return;
         }
         $todo->completed = !$todo->completed;
         $todo->save();
-
         $this->selectTodos();
-
-
     }
 
-    public function deleteTodo($id) {
-
+    public function deleteTodo($id)
+    {
         $todo = TodoItem::where('id', $id)->first();
         if (!$todo) {
             return;
         }
         $todo->delete();
         $this->selectTodos();
+    }
+
+    public function selectTodos()
+    {
+        $this->todos = TodoItem::orderBy('created_at', 'DESC')->get();
     }
 }
