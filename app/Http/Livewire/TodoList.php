@@ -10,6 +10,18 @@ class TodoList extends Component
     public $todos;
     public string $todoText = '';
 
+    protected $rules = [
+        'todoText' => 'required|min:5'
+    ];
+
+    protected $validationAttributes = [
+        'todoText' => 'ToDo'
+    ];
+
+    public function updated($propertyName) {
+        $this->validateOnly($propertyName);
+    }
+
     public function mount()
     {
         $this->selectTodos();
@@ -22,6 +34,10 @@ class TodoList extends Component
 
     public function addTodo()
     {
+        // $data = $this->validate();
+        // dd($data);
+        // die();
+
         $todo = new TodoItem();
         $todo->title = $this->todoText;
         $todo->completed = false;
