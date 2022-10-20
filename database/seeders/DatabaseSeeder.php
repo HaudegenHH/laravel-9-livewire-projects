@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Continent;
 use App\Models\Country;
+use App\Models\Product;
 use App\Models\TodoItem;
 use Illuminate\Database\Seeder;
 
@@ -35,5 +36,7 @@ class DatabaseSeeder extends Seeder
                     $con->countries()->saveMany(Country::factory(10)->make());
                 });
         }
+
+        Product::factory(100)->create();
     }
 }

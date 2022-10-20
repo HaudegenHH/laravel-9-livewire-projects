@@ -1,2 +1,2 @@
 -- SQLite
-SELECT * FROM countries;
+SELECT * FROM products;
