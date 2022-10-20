@@ -21,3 +21,11 @@
 ```
 
 Open your browser: "http://localhost:8000"
+
+---
+
+Create a symlink to the storage (for image upload component)
+
+```sh
+php artisan storage:link
+```
